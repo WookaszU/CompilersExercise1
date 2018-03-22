@@ -46,12 +46,12 @@ tokens = (
 #  (longer expressions are added first).
 
 
-t_MADD    = r'\.+'
+t_MADD    = r'\.\+'
 t_MSUB   = r'\.-'
 t_MMUL   = r'\.\*'
 t_MDIV  = r'\./'
 t_ADDEQUAL = r'\+='
-t_SUBEQUAL = r'-+'
+t_SUBEQUAL = r'-='
 t_MULEQUAL = r'\*='
 t_DIVEQUAL = r'/='
 t_TRANSPOSE = r'\''
