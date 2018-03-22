@@ -82,6 +82,11 @@ t_ignore = '  \t'
 t_ignore_COMMENT = r'\#.*'
 
 
+#jak to zmienic w porownaniu do inta
+def t_FLOATNUM(t):
+    r'^\d+?\.\d+?$'
+    t.value = float(t.value)
+    return t
 
 def t_INTNUM(t):
     r'\d+'
@@ -92,12 +97,6 @@ def t_ID(t):
     r'[a-zA-Z_]\w*'
     return t
 
-
-#jak to zmienic w porownaniu do inta
-def t_FLOATNUM(t):
-    r'\d+'
-    t.value = float(t.value)
-    return t
 
 
 
