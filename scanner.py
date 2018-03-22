@@ -1,0 +1,115 @@
+
+import ply.lex as lex
+
+
+literals = ['+', '-', '*', '/', '(', ')','[',']','{','}','=','<','>',':',',',';']
+
+# List of token names.   This is always required
+tokens = (
+   'IF',
+   'ELSE',
+   'FOR',
+   'WHILE',
+   'BREAK',
+   'CONTINUE',
+   'RETURN',
+   'EYE',
+   'ZEROS',
+   'ONES',
+   'PRINT',
+   'ID',
+   'INTNUM',
+   'FLOATNUM',
+
+   'MADD',
+   'MSUB',
+   'MMUL',
+   'MDIV',
+   'ADDEQUAL',
+   'SUBEQUAL',
+   'MULEQUAL',
+   'DIVEQUAL',
+   'LE',
+   'GE',
+   'NE',
+   'E',
+   'TRANSPOSE',
+   'COMMENT'
+   
+
+)
+
+
+t_MADD    = r'\.+'
+t_MSUB   = r'.-'
+t_MMUL   = r'\.\*'
+t_MDIV  = r'./'
+t_ADDEQUAL = r'\+='
+t_SUBEQUAL = r'-+'
+t_MULEQUAL = r'\*='
+t_DIVEQUAL = r'/='
+t_TRANSPOSE = r'\''
+
+t_LE = r'\<='
+t_GE = r'\>='
+t_NE = r'!='
+t_E = r'=='
+
+
+t_IF = r'if'
+t_ELSE = r'else'
+t_FOR = r'for'
+t_WHILE = r'while'
+
+t_BREAK = r'break'
+t_CONTINUE = r'contunue'
+t_RETURN = r'return'
+
+t_EYE = r'eye' 
+t_ZEROS = r'zeros'
+t_ONES = r'ones'
+t_PRINT = r'print'
+
+t_ignore = '  \t'
+t_ignore_COMMENT = r'\#.*'
+
+
+
+def t_INTNUM(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
+def t_ID(t):
+    r'[a-zA-Z_]\w*'
+    return t
+
+
+#jak to zmienic w porownaniu do inta
+def t_FLOATNUM(t):
+    r'\d+'
+    t.value = float(t.value)
+    return t
+
+
+
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
+
+def t_error(t):
+    print("Illegal character '%s'" % t.value[0])
+    t.lexer.skip(1)
+
+
+# Compute column.
+#     input is the input text string
+#     token is a token instance
+def find_column(input, token):
+    line_start = input.rfind('\n', 0, token.lexpos) + 1
+    return (token.lexpos - line_start) + 1
+
+
+lexer = lex.lex()
