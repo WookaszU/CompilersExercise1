@@ -21,14 +21,14 @@ tokens = (
    'INTNUM',
    'FLOATNUM',
 
-   'MADD',
-   'MSUB',
-   'MMUL',
-   'MDIV',
-   'ADDEQUAL',
-   'SUBEQUAL',
-   'MULEQUAL',
-   'DIVEQUAL',
+   'DOTADD',
+   'DOTSUB',
+   'DOTMUL',
+   'DOTDIV',
+   'ADDASSIGN',
+   'SUBASSIGN',
+   'MULASSIGN',
+   'DIVASSIGN',
    'LE',
    'GE',
    'NE',
@@ -60,14 +60,14 @@ reserved = {
 #  (longer expressions are added first).
 
 
-t_MADD    = r'\.\+'
-t_MSUB   = r'\.-'
-t_MMUL   = r'\.\*'
-t_MDIV  = r'\./'
-t_ADDEQUAL = r'\+='
-t_SUBEQUAL = r'-='
-t_MULEQUAL = r'\*='
-t_DIVEQUAL = r'/='
+t_DOTADD    = r'\.\+'
+t_DOTSUB   = r'\.-'
+t_DOTMUL   = r'\.\*'
+t_DOTDIV  = r'\./'
+t_ADDASSIGN = r'\+='
+t_SUBASSIGN = r'-='
+t_MULASSIGN = r'\*='
+t_DIVASSIGN = r'/='
 t_TRANSPOSE = r'\''
 
 t_LE = r'\<='
@@ -96,7 +96,8 @@ t_ignore = '  \t'
 t_ignore_COMMENT = r'\#.*'
 
 
-#jak to zmienic w porownaniu do inta
+#jak to zmienic w porownaniu do inta?
+#nie dziala teraz
 def t_FLOATNUM(t):
     r'^\d+?\.\d+?$'
     t.value = float(t.value)
