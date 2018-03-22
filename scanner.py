@@ -96,10 +96,8 @@ t_ignore = '  \t'
 t_ignore_COMMENT = r'\#.*'
 
 
-#jak to zmienic w porownaniu do inta?
-#nie dziala teraz
 def t_FLOATNUM(t):
-    r'^\d+?\.\d+?$'
+    r'\d+\.\d+'
     t.value = float(t.value)
     return t
 
