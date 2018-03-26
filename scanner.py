@@ -100,7 +100,7 @@ def t_newline(t):
 
 
 def t_error(t):
-    print("Illegal character {first} at line {second}".format(first=t.value[0], second=t.lexer.lineno))
+    print("Illegal character '{first}' at line {second}".format(first=t.value[0], second=t.lexer.lineno))
     t.lexer.skip(1)
 
 
